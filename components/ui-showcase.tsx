@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel';
 
 interface UIShowcaseProps {
   images: {
@@ -19,14 +19,11 @@ interface UIShowcaseProps {
 }
 
 export function UIShowcase({ images }: UIShowcaseProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
     <div className="relative rounded-xl overflow-hidden border border-border/50 shadow-lg">
-      <Carousel 
-        className="w-full"
-        onSelect={(index) => setActiveIndex(index)}
-      >
+      <Carousel className="w-full">
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={index}>
@@ -45,15 +42,16 @@ export function UIShowcase({ images }: UIShowcaseProps) {
         <CarouselNext className="right-4" />
       </Carousel>
 
+      {/* Custom indicator dots */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
         {images.map((_, index) => (
           <button
             key={index}
-            className={cn(
-              "w-2 h-2 rounded-full transition-all",
-              activeIndex === index ? "bg-white w-4" : "bg-white/50"
-            )}
             onClick={() => setActiveIndex(index)}
+            className={cn(
+              'w-2 h-2 rounded-full transition-all',
+              activeIndex === index ? 'bg-white w-4' : 'bg-white/50'
+            )}
           />
         ))}
       </div>
