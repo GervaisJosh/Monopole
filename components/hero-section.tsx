@@ -76,7 +76,7 @@ export function HeroSection({
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full px-8 glow-hover"
+              className="rounded-full px-8 glow-hover font-display"
               asChild
             >
               <a href={ctaHref}>{ctaText}</a>

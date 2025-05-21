@@ -30,13 +30,15 @@ export default function Home() {
             title="Club Cuvée"
             description="An intelligent wine membership platform that connects restaurant inventory, guest data, and AI recommendations."
             href="/club-cuvee"
-            imageSrc="https://images.pexels.com/photos/2912108/pexels-photo-2912108.jpeg"
+            imageSrc="/images/club-cuvee-preview.png"
+            className="glow-hover hover:scale-105 transition-all duration-300"
           />
           <ProductCard
             title="Pre-shift"
             description="AI-driven training and onboarding for restaurant staff using real-time menu data and contextual education."
             href="/pre-shift"
             imageSrc="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg"
+            className="glow-hover hover:scale-105 transition-all duration-300"
           />
         </div>
       </SectionWrapper>

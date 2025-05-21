@@ -43,7 +43,7 @@ export default function PreShift() {
         <UIShowcase images={mockUiImages} />
       </FeatureSection>
       
-      <SectionWrapper className="bg-muted">
+      <SectionWrapper className="bg-black">
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
           <h2 className="font-serif text-3xl md:text-4xl mb-4">Key Features</h2>
           <p className="text-muted-foreground md:text-lg">

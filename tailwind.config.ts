@@ -55,6 +55,12 @@ const config: Config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+
+        // ⚡ Only use manually — not applied globally anymore
+        brand: {
+          DEFAULT: '#1471ff',
+          soft: '#1992ff',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

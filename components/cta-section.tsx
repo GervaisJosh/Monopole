@@ -28,10 +28,10 @@ export function CTASection({
                 placeholder="Enter your email" 
                 className="bg-background"
               />
-              <Button className="whitespace-nowrap glow-hover">{buttonText}</Button>
+              <Button className="whitespace-nowrap glow-hover font-display">{buttonText}</Button>
             </div>
           ) : (
-            <Button size="lg" className="glow-hover">{buttonText}</Button>
+            <Button size="lg" className="glow-hover font-display">{buttonText}</Button>
           )}
         </div>
       </div>
