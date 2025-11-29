@@ -15,6 +15,8 @@ export default function Home() {
         description="We build deeply integrated AI systems that elevate hospitality—from personalized wine clubs to adaptive staff education"
         ctaText="Visit Club Cuvée"
         ctaHref="https://www.club-cuvee.com/landing"
+        secondaryCtaText="Visit Pre-Shift"
+        secondaryCtaHref="https://www.pre-shift.io"
       />
       
       <SectionWrapper>
@@ -37,7 +39,7 @@ export default function Home() {
             title="Pre-shift"
             description="AI-driven training and onboarding for restaurant staff using real-time menu data and contextual education."
             href="/pre-shift"
-            imageSrc="https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg"
+            imageSrc="/images/PS-landing-page.png"
             className="glow-hover hover:scale-105 transition-all duration-300"
           />
         </div>
@@ -81,20 +83,36 @@ export default function Home() {
           <p className="text-muted-foreground text-base md:text-lg mb-8">
             See how Monopole AI's products can enhance your restaurant operations and guest experiences.
           </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="font-display glow-hover"
-            asChild
-          >
-            <a
-              href="https://www.club-cuvee.com/landing"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="outline"
+              size="lg"
+              className="font-display glow-hover"
+              asChild
             >
-              Visit Club Cuvée →
-            </a>
-          </Button>
+              <a
+                href="https://www.club-cuvee.com/landing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Club Cuvée →
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="font-display glow-hover"
+              asChild
+            >
+              <a
+                href="https://www.pre-shift.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Pre-Shift →
+              </a>
+            </Button>
+          </div>
         </div>
       </SectionWrapper>
     </div>

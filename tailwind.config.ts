@@ -61,6 +61,9 @@ const config: Config = {
           DEFAULT: '#1471ff',
           soft: '#1992ff',
         },
+        preshift: {
+          DEFAULT: '#0057A4',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

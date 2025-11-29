@@ -66,6 +66,19 @@ export function Header() {
                 Visit Club Cuvée
               </a>
             </Button>
+            <Button
+              variant="outline"
+              className="font-display text-sm glow-hover border border-white/30 hover:border-white"
+              asChild
+            >
+              <a
+                href="https://www.pre-shift.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Pre-Shift
+              </a>
+            </Button>
           </nav>
 
           {/* Mobile Navigation */}
@@ -98,6 +111,19 @@ export function Header() {
                     rel="noopener noreferrer"
                   >
                     Visit Club Cuvée
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full font-display glow-hover border border-white/30 hover:border-white"
+                  asChild
+                >
+                  <a
+                    href="https://www.pre-shift.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Pre-Shift
                   </a>
                 </Button>
               </nav>

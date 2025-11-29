@@ -11,6 +11,8 @@ interface HeroSectionProps {
   description: string;
   ctaText: string;
   ctaHref: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
 }
 
 export function HeroSection({
@@ -19,6 +21,8 @@ export function HeroSection({
   description,
   ctaText,
   ctaHref,
+  secondaryCtaText,
+  secondaryCtaHref,
 }: HeroSectionProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -69,7 +73,7 @@ export function HeroSection({
 
           <div
             className={cn(
-              "transition-all duration-700 delay-300",
+              "flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-300",
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
@@ -79,8 +83,22 @@ export function HeroSection({
               className="rounded-full px-8 glow-hover font-display"
               asChild
             >
-              <a href={ctaHref}>{ctaText}</a>
+              <a href={ctaHref} target="_blank" rel="noopener noreferrer">
+                {ctaText}
+              </a>
             </Button>
+            {secondaryCtaText && secondaryCtaHref && (
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 glow-hover font-display"
+                asChild
+              >
+                <a href={secondaryCtaHref} target="_blank" rel="noopener noreferrer">
+                  {secondaryCtaText}
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>

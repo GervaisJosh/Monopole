@@ -25,7 +25,8 @@ export default function PreShift() {
           {/* Left: Hero Text */}
           <div className="order-2 lg:order-1">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 text-white">
-              Pre-Shift: Training that starts with your menus.
+              Pre-Shift: Training that{' '}
+              <span className="text-preshift">starts with your menus.</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               Pre-Shift ingests your food, wine, and cocktail menus—plus SOPs and training manuals—and turns them into structured lessons, quizzes, and an always-up-to-date knowledge base for your team.
@@ -49,9 +50,10 @@ export default function PreShift() {
           <div className="order-1 lg:order-2">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
               <Image
-                src="/images/Pre-Shift-Dash.png"
-                alt="Pre-Shift dashboard showing training analytics, completion rates, and weekly activity."
-                fill
+                src="/images/PS-landing-page.png"
+                alt="Pre-Shift training dashboard showing menu-based training modules and analytics."
+                width={1200}
+                height={900}
                 className="object-cover"
               />
             </div>
@@ -64,7 +66,8 @@ export default function PreShift() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
-              Built directly from your menus and documents
+              Built directly{' '}
+              <span className="text-preshift">from your menus and documents</span>
             </h2>
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
               Pre-Shift starts with the information you already have: PDFs of your menus, wine lists, cocktail lists, allergy charts, SOPs, and training manuals.
@@ -74,43 +77,29 @@ export default function PreShift() {
             </p>
           </div>
 
-          {/* 3-Step Process */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mt-12">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
-                <Upload className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="font-medium text-xl mb-3 text-white">
-                1. Upload your menus and docs
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Food menus, cocktails, wine by the glass, bottle lists, allergy information, SOPs, and training manuals.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
-                <Database className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="font-medium text-xl mb-3 text-white">
-                2. Structure and review the knowledge base
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Pre-Shift organizes that information into items and sections. You can review, edit, and approve before it becomes training material.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
-                <GraduationCap className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="font-medium text-xl mb-3 text-white">
-                3. Create modules and tests from that information
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Modules, quizzes, and refresher lessons are generated from the same underlying data, so training always matches what's on the floor tonight.
-              </p>
-            </div>
+          {/* 3-Step Process - Bento Boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+            <FeatureBentoCard
+              title="1. Upload your menus and docs"
+              description="Food menus, cocktails, wine by the glass, bottle lists, allergy information, SOPs, and training manuals."
+              icon={<Upload className="h-10 w-10" />}
+              delay={0}
+              titleClassName="text-preshift"
+            />
+            <FeatureBentoCard
+              title="2. Structure and review the knowledge base"
+              description="Pre-Shift organizes that information into items and sections. You can review, edit, and approve before it becomes training material."
+              icon={<Database className="h-10 w-10" />}
+              delay={1}
+              titleClassName="text-preshift"
+            />
+            <FeatureBentoCard
+              title="3. Create modules and tests from that information"
+              description="Modules, quizzes, and refresher lessons are generated from the same underlying data, so training always matches what's on the floor tonight."
+              icon={<GraduationCap className="h-10 w-10" />}
+              delay={2}
+              titleClassName="text-preshift"
+            />
           </div>
         </div>
       </SectionWrapper>
