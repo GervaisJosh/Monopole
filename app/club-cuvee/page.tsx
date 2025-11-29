@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { FeatureCard } from '@/components/feature-card';
-import { CTASection } from '@/components/cta-section';
+import { FeatureBentoCard } from '@/components/ui/feature-bento-card';
 import { Wine, Database, Sparkles, Users, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -90,41 +89,29 @@ export default function ClubCuvee() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <FeatureCard
+          <FeatureBentoCard
             title="AI Wine Analysis"
             description="Analyze your inventory and guest trends to optimize decisions."
             icon={<BarChart2 className="h-10 w-10" />}
             delay={0}
-            className="glow-hover"
-            titleClassName="text-white"
-            descriptionClassName="text-muted-foreground"
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Revenue Tools"
             description="Maximize sales with AI-driven promotions and recommendations."
             icon={<Sparkles className="h-10 w-10" />}
             delay={1}
-            className="glow-hover"
-            titleClassName="text-white"
-            descriptionClassName="text-muted-foreground"
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Customer Engagement"
             description="Deliver tailored wine journeys to every guest."
             icon={<Users className="h-10 w-10" />}
             delay={2}
-            className="glow-hover"
-            titleClassName="text-white"
-            descriptionClassName="text-muted-foreground"
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Ratings & Insights"
             description="Capture preferences through a modern wine rating system."
             icon={<Wine className="h-10 w-10" />}
             delay={3}
-            className="glow-hover"
-            titleClassName="text-white"
-            descriptionClassName="text-muted-foreground"
           />
         </div>
       </SectionWrapper>
@@ -169,12 +156,30 @@ export default function ClubCuvee() {
       </SectionWrapper>
 
       {/* CTA */}
-      <CTASection
-        title="Ready to revolutionize your wine program?"
-        description="Join leading restaurants already using Club Cuvée to create exceptional wine experiences."
-        buttonText="Request Access"
-        type="demo"
-      />
+      <SectionWrapper className="bg-black py-20">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4 text-white">
+            Ready to revolutionize your wine program?
+          </h3>
+          <p className="text-muted-foreground text-base md:text-lg mb-8">
+            Join leading restaurants already using Club Cuvée to create exceptional wine experiences.
+          </p>
+          <Button
+            variant="outline"
+            size="lg"
+            className="font-display glow-hover"
+            asChild
+          >
+            <a
+              href="https://www.club-cuvee.com/landing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Club Cuvée →
+            </a>
+          </Button>
+        </div>
+      </SectionWrapper>
     </>
   );
 }

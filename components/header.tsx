@@ -56,8 +56,15 @@ export function Header() {
             <Button
               variant="outline"
               className="font-display text-sm glow-hover border border-white/30 hover:border-white"
+              asChild
             >
-              Request Demo
+              <a
+                href="https://www.club-cuvee.com/landing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit Club Cuvée
+              </a>
             </Button>
           </nav>
 
@@ -83,8 +90,15 @@ export function Header() {
                 <Button
                   variant="outline"
                   className="w-full font-display glow-hover border border-white/30 hover:border-white"
+                  asChild
                 >
-                  Request Demo
+                  <a
+                    href="https://www.club-cuvee.com/landing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Club Cuvée
+                  </a>
                 </Button>
               </nav>
             </SheetContent>

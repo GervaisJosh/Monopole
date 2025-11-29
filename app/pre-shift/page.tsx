@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { FeatureCard } from '@/components/feature-card';
+import { FeatureBentoCard } from '@/components/ui/feature-bento-card';
 import {
   Upload,
   ShieldAlert,
@@ -20,11 +20,11 @@ export default function PreShift() {
   return (
     <>
       {/* Hero Section */}
-      <SectionWrapper className="pt-32 md:pt-40 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <SectionWrapper className="pt-32 md:pt-40 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Left: Hero Text */}
           <div className="order-2 lg:order-1">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 text-white">
               Pre-Shift: Training that starts with your menus.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -33,13 +33,13 @@ export default function PreShift() {
 
             {/* Pills */}
             <div className="flex flex-wrap gap-3 mb-8">
-              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium">
+              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium text-white/90">
                 Built from your actual menus
               </span>
-              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium">
+              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium text-white/90">
                 Lessons, quizzes, and knowledge base
               </span>
-              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium">
+              <span className="px-4 py-2 rounded-full border border-border/50 bg-background/50 text-sm font-medium text-white/90">
                 Front & back-of-house ready
               </span>
             </div>
@@ -47,10 +47,10 @@ export default function PreShift() {
 
           {/* Right: Dashboard Image Placeholder */}
           <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
               <Image
-                src="/images/preshift-dashboard-placeholder.jpg"
-                alt="Pre-Shift dashboard showing menu-based training modules for a restaurant team."
+                src="/images/Pre-Shift-Dash.png"
+                alt="Pre-Shift dashboard showing training analytics, completion rates, and weekly activity."
                 fill
                 className="object-cover"
               />
@@ -60,27 +60,27 @@ export default function PreShift() {
       </SectionWrapper>
 
       {/* How It Works Section */}
-      <SectionWrapper className="bg-black">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6">
+      <SectionWrapper className="bg-black py-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
               Built directly from your menus and documents
             </h2>
-            <p className="text-muted-foreground md:text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
               Pre-Shift starts with the information you already have: PDFs of your menus, wine lists, cocktail lists, allergy charts, SOPs, and training manuals.
             </p>
-            <p className="text-muted-foreground md:text-lg leading-relaxed mt-4">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mt-4 max-w-3xl mx-auto">
               The system parses that information into structured items—dishes, wines, cocktails, sections, and standards—and stores them in a searchable knowledge base that powers lessons, quizzes, and inline conversations with your team.
             </p>
           </div>
 
           {/* 3-Step Process */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mt-12">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
                 <Upload className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="font-medium text-xl mb-3">
+              <h3 className="font-medium text-xl mb-3 text-white">
                 1. Upload your menus and docs
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -89,10 +89,10 @@ export default function PreShift() {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
                 <Database className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="font-medium text-xl mb-3">
+              <h3 className="font-medium text-xl mb-3 text-white">
                 2. Structure and review the knowledge base
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -101,10 +101,10 @@ export default function PreShift() {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50">
                 <GraduationCap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="font-medium text-xl mb-3">
+              <h3 className="font-medium text-xl mb-3 text-white">
                 3. Create modules and tests from that information
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -116,52 +116,52 @@ export default function PreShift() {
       </SectionWrapper>
 
       {/* Key Features Section */}
-      <SectionWrapper>
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl mb-4">Key Features</h2>
-          <p className="text-muted-foreground md:text-lg">
+      <SectionWrapper className="py-24">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4 text-white">Key Features</h2>
+          <p className="text-muted-foreground text-base md:text-lg">
             A menu- and data-driven training system that turns your information into structured knowledge for your team.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <FeatureCard
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <FeatureBentoCard
             title="Multi-menu upload & coverage"
             description="Upload food, cocktail, wine by the glass, bottle lists, and seasonal inserts. Pre-Shift keeps track of each section so training aligns with what guests actually see."
             icon={<Upload className="h-10 w-10" />}
             delay={0}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Allergy & dietary flagging"
             description="Tag items with allergy and dietary information so staff can quickly learn what is safe for each guest and why. Use the same data for both training and daily reference."
             icon={<ShieldAlert className="h-10 w-10" />}
             delay={1}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Audio enrichment for better learning"
             description="Layer recorded audio explanations from your leadership or trainers on top of written content, so staff can hear how you talk about dishes, wines, and service standards."
             icon={<Headphones className="h-10 w-10" />}
             delay={2}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Module creation from a shared knowledge base"
             description="Training modules are built from the same underlying knowledge base as your menus and docs. The system suggests modules and questions automatically, and managers can refine and approve them."
             icon={<BookOpen className="h-10 w-10" />}
             delay={3}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Configurable tests and recurring assessments"
             description="Set up quarterly tests, section-specific quizzes, or short pre-shift checks. Choose which menus or topics they cover and how often they recur."
             icon={<ClipboardCheck className="h-10 w-10" />}
             delay={4}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Personalized modules based on performance"
             description="When a staff member misses questions about a region, category, or dish, Pre-Shift schedules follow-up modules to close those gaps over time."
             icon={<Target className="h-10 w-10" />}
             delay={5}
           />
-          <FeatureCard
+          <FeatureBentoCard
             title="Inline, menu-aware chatbot"
             description="Staff can ask questions in plain language about the menu and standards. The focus is not 'right or wrong' answers, but working through the information until they truly understand."
             icon={<MessageSquare className="h-10 w-10" />}
@@ -171,64 +171,59 @@ export default function PreShift() {
       </SectionWrapper>
 
       {/* Outcomes Section */}
-      <SectionWrapper className="bg-black">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6">
+      <SectionWrapper className="bg-black py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 text-white">
               Turn information into confident service
             </h2>
-            <p className="text-muted-foreground md:text-lg leading-relaxed mb-4">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-4">
               Most restaurants already have the information they need—menus, allergy charts, wine lists, pre-shift notes—but it lives in PDFs, binders, and scattered docs.
             </p>
-            <p className="text-muted-foreground md:text-lg leading-relaxed">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
               Pre-Shift connects that information and turns it into structured training your team can use every day: short modules before service, deeper refreshers between seasons, and ongoing conversations around your actual offerings.
             </p>
           </div>
 
-          {/* Outcome Points */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="text-center p-6 rounded-lg border border-border/50 bg-background/30">
-              <Clock className="h-10 w-10 text-primary mx-auto mb-4" />
-              <h3 className="font-medium text-lg mb-2">Faster onboarding for new staff</h3>
-              <p className="text-muted-foreground text-sm">
-                New hires get up to speed quickly with structured modules built directly from your current menus and standards.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg border border-border/50 bg-background/30">
-              <Users className="h-10 w-10 text-primary mx-auto mb-4" />
-              <h3 className="font-medium text-lg mb-2">More consistent menu knowledge across the team</h3>
-              <p className="text-muted-foreground text-sm">
-                Everyone learns from the same underlying information, ensuring consistent guest experiences no matter who's on the floor.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg border border-border/50 bg-background/30">
-              <RefreshCw className="h-10 w-10 text-primary mx-auto mb-4" />
-              <h3 className="font-medium text-lg mb-2">Less time rebuilding training from scratch every menu change</h3>
-              <p className="text-muted-foreground text-sm">
-                Update your knowledge base once, and training modules, quizzes, and reference materials update automatically.
-              </p>
-            </div>
+          {/* Outcome Points - Using Bento Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+            <FeatureBentoCard
+              title="Faster onboarding for new staff"
+              description="New hires get up to speed quickly with structured modules built directly from your current menus and standards."
+              icon={<Clock className="h-10 w-10" />}
+              delay={0}
+            />
+            <FeatureBentoCard
+              title="More consistent menu knowledge across the team"
+              description="Everyone learns from the same underlying information, ensuring consistent guest experiences no matter who's on the floor."
+              icon={<Users className="h-10 w-10" />}
+              delay={1}
+            />
+            <FeatureBentoCard
+              title="Less time rebuilding training from scratch every menu change"
+              description="Update your knowledge base once, and training modules, quizzes, and reference materials update automatically."
+              icon={<RefreshCw className="h-10 w-10" />}
+              delay={2}
+            />
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Optional: Image Strip Section */}
-      <SectionWrapper>
+      {/* Image Strip Section */}
+      <SectionWrapper className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
             <Image
-              src="/images/preshift-team-placeholder.jpg"
-              alt="Restaurant team reviewing training modules before service."
+              src="/images/Knowledgebase.png"
+              alt="Pre-Shift knowledge base showing menu items with allergen tags and enrichment options."
               fill
               className="object-cover"
             />
           </div>
-          <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
             <Image
-              src="/images/preshift-analytics-placeholder.jpg"
-              alt="Pre-Shift training analytics showing completion and knowledge areas."
+              src="/images/Training-Modules.png"
+              alt="Pre-Shift training modules including Spring Menu Mastery, Service Excellence, and Classic Cocktails Guide."
               fill
               className="object-cover"
             />
@@ -237,12 +232,12 @@ export default function PreShift() {
       </SectionWrapper>
 
       {/* CTA Section - Static */}
-      <SectionWrapper className="bg-black">
+      <SectionWrapper className="bg-black py-20">
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="font-serif text-2xl md:text-3xl mb-4">
+          <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4 text-white">
             Interested in using Pre-Shift at your restaurant?
           </h3>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground text-base md:text-lg mb-6">
             We're currently working with a small group of early partners.
           </p>
           <a

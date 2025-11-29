@@ -9,6 +9,11 @@ import { ThemeProvider } from '@/components/theme-provider';
 export const metadata: Metadata = {
   title: 'Monopole AI | Intelligent Tools for Modern Hospitality',
   description: 'Monopole AI crafts intelligent SaaS tools for the modern hospitality industry, including Club Cuvée wine membership platform and Pre-shift staff training system.',
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
