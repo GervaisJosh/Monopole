@@ -95,7 +95,7 @@ export function Header() {
                   <Link
                     key={route.href}
                     href={route.href}
-                    className="font-display text-lg text-white transition-all px-4 py-2 rounded-full border border-transparent hover:border-white glow-hover"
+                    className="font-display text-lg text-white transition-all px-4 py-3 rounded-full border border-transparent hover:border-white glow-hover"
                   >
                     {route.label}
                   </Link>

@@ -31,7 +31,7 @@ export function HeroSection({
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden w-full bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full bg-black py-20">
       <div className="absolute inset-0 z-0">
         <Image
           src="/Wine-bottle-neck.png"
@@ -64,7 +64,7 @@ export function HeroSection({
 
           <p
             className={cn(
-              "text-muted-foreground text-lg md:text-xl mb-8 max-w-2xl mx-auto transition-all duration-700 delay-150",
+              "text-muted-foreground text-base md:text-lg lg:text-xl mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-150",
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >

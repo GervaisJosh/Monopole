@@ -39,7 +39,7 @@ export default function Home() {
             title="Pre-shift"
             description="AI-driven training and onboarding for restaurant staff using real-time menu data and contextual education."
             href="/pre-shift"
-            imageSrc="/images/PS-landing-page.png"
+            imageSrc="/images/PS-landing-improved.png"
             className="glow-hover hover:scale-105 transition-all duration-300"
           />
         </div>

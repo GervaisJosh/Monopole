@@ -17,7 +17,7 @@ export default function ClubCuvee() {
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 text-white">
             Club Cuvée
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 leading-relaxed">
             A wine membership platform that connects restaurants' wine inventory, guest data, and a custom recommendation algorithm.
           </p>
         </div>

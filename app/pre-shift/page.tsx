@@ -48,15 +48,22 @@ export default function PreShift() {
 
           {/* Right: Dashboard Image Placeholder */}
           <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
-              <Image
-                src="/images/PS-landing-page.png"
-                alt="Pre-Shift training dashboard showing menu-based training modules and analytics."
-                width={1200}
-                height={900}
-                className="object-cover"
-              />
-            </div>
+            <a
+              href="https://www.pre-shift.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border/50 transition-transform duration-300 hover:scale-[1.01] glow-hover">
+                <Image
+                  src="/images/PS-landing-improved.png"
+                  alt="Pre-Shift training dashboard showing menu-based training modules and analytics."
+                  width={1200}
+                  height={900}
+                  className="object-cover"
+                />
+              </div>
+            </a>
           </div>
         </div>
       </SectionWrapper>
