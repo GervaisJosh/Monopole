@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import RotatingText from '@/components/RotatingText';
 
@@ -23,37 +24,35 @@ export function HeroSection({
   const words = headline.split(' ');
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* Subtle radial glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.03) 0%, transparent 60%)',
-        }}
-      />
-      {/* Subtle grain overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '128px 128px',
-        }}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/Wine-bottle-neck.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Dark/light overlay */}
+        <div className="absolute inset-0 bg-white/70 dark:bg-black/80" />
+        {/* Bottom gradient for smooth section transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      </div>
 
+      {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         {/* Wordmark */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease, delay: 0.1 }}
-          className="font-brand text-sm tracking-widest text-muted-foreground mb-8"
+          transition={{ duration: 0.8, ease }}
+          className="font-brand text-sm tracking-[0.3em] uppercase text-muted-foreground mb-8"
         >
           MONOPOLE AI
         </motion.p>
 
-        {/* Headline — manual staggered word reveal */}
+        {/* Headline — staggered word reveal */}
         <div className="flex flex-wrap justify-center gap-x-[0.3em]">
           {words.map((word, i) => (
             <motion.span
@@ -65,7 +64,7 @@ export function HeroSection({
                 duration: 0.5,
                 ease,
               }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white font-display"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-foreground font-display"
             >
               {word}
             </motion.span>
@@ -76,13 +75,13 @@ export function HeroSection({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease, delay: 0.8 }}
+          transition={{ duration: 0.5, ease, delay: 0.9 }}
           className="mt-6 sm:mt-8 text-lg sm:text-xl text-muted-foreground flex items-center justify-center gap-2 flex-wrap"
         >
           <span>{rotatingPrefix}</span>
           <RotatingText
             texts={rotatingTexts}
-            mainClassName="text-white font-medium"
+            mainClassName="text-foreground font-medium"
             staggerFrom="first"
             staggerDuration={0.02}
             splitBy="characters"
@@ -95,22 +94,16 @@ export function HeroSection({
           />
         </motion.div>
 
-        {/* Single CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        {/* Single CTA — scrolls to products */}
+        <motion.a
+          href={ctaHref}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 1.0 }}
-          className="mt-10 sm:mt-12"
+          transition={{ delay: 1.2, duration: 0.5, ease }}
+          className="inline-flex items-center justify-center mt-10 sm:mt-12 px-8 py-3 rounded-lg text-sm font-medium border border-zinc-300 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
         >
-          <a
-            href={ctaHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
-          >
-            {ctaText}
-          </a>
-        </motion.div>
+          {ctaText}
+        </motion.a>
       </div>
     </section>
   );

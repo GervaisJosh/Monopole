@@ -22,10 +22,10 @@ function ShowcaseCard({
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, ease, delay: delay * 0.08 }}
       whileHover={{ scale: 1.03, translateY: -6 }}
-      className="rounded-2xl border border-white/5 dark:border-white/5 border-zinc-200 bg-white dark:bg-white/[0.02] p-6 space-y-6 transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_0_30px_rgba(255,255,255,0.03)]"
+      className="rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-white/[0.02] p-6 space-y-6 transition-shadow duration-300 shadow-sm dark:shadow-none hover:shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_4px_20px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_0_30px_rgba(255,255,255,0.03)]"
     >
       {children}
-      <div className="border-t border-white/5 dark:border-white/5 pt-4">
+      <div className="border-t border-zinc-100 dark:border-white/5 pt-4">
         <h3 className="text-lg font-semibold text-foreground font-display">
           {title}
         </h3>
@@ -60,7 +60,7 @@ function QuestionGroundingUI() {
             className={`text-xs px-3 py-2 rounded-lg border ${
               i === 1
                 ? 'border-[#0057A4]/40 bg-[#0057A4]/10 text-[#0057A4]'
-                : 'border-white/5 dark:border-white/5 bg-white/[0.02] dark:bg-white/[0.02] text-muted-foreground'
+                : 'border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-white/[0.02] text-muted-foreground'
             }`}
           >
             {String.fromCharCode(65 + i)}. {opt}
@@ -120,7 +120,7 @@ function AdaptiveLearningUI() {
             <span className="text-muted-foreground">{item.label}</span>
             <span className="text-foreground/70">{item.pct}%</span>
           </div>
-          <div className="h-1.5 rounded-full bg-white/5 dark:bg-white/5">
+          <div className="h-1.5 rounded-full bg-zinc-100 dark:bg-white/5">
             <div
               className={`h-full rounded-full ${item.color}`}
               style={{ width: `${item.pct}%` }}

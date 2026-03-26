@@ -7,7 +7,8 @@ import { List, X } from '@phosphor-icons/react';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const routes = [
-  { href: '/#products', label: 'Products' },
+  { href: '/pre-shift', label: 'Pre-Shift' },
+  { href: '/club-cuvee', label: 'Club Cuvée' },
   { href: 'mailto:josh@monopole-ai.com', label: 'Contact', external: true },
 ];
 
@@ -37,7 +38,7 @@ export function Header() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10'
+          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-zinc-200/50 dark:border-white/10'
           : 'bg-transparent backdrop-blur-sm'
       )}
     >

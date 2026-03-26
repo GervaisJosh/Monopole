@@ -6,24 +6,26 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <span className="font-brand text-lg text-foreground">MONOPOLE AI</span>
+            <span className="font-brand text-lg text-foreground">
+              MONOPOLE AI
+            </span>
             <p className="text-muted-foreground text-sm mt-3 max-w-xs">
-              Technology built for hospitality.
+              Effective, affordable, beautiful software for hospitality.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-foreground mb-4">Products</h4>
+            <h4 className="text-sm font-medium text-foreground mb-4">
+              Products
+            </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="https://pre-shift.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/pre-shift"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Pre-Shift
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
@@ -37,7 +39,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-foreground mb-4">Contact</h4>
+            <h4 className="text-sm font-medium text-foreground mb-4">
+              Contact
+            </h4>
             <a
               href="mailto:josh@monopole-ai.com"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -49,7 +53,7 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-border">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Monopole AI. All rights reserved.
+            &copy; 2026 Monopole AI. All rights reserved.
           </p>
         </div>
       </div>
