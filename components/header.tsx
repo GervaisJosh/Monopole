@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { List, X } from '@phosphor-icons/react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const routes = [
   { href: '/#products', label: 'Products' },
@@ -36,7 +37,7 @@ export function Header() {
       className={cn(
         'fixed top-0 w-full z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm'
+          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10'
           : 'bg-transparent backdrop-blur-sm'
       )}
     >
@@ -70,20 +71,24 @@ export function Header() {
                 </Link>
               )
             )}
+            <ThemeToggle />
           </nav>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <X size={24} weight="regular" />
-            ) : (
-              <List size={24} weight="regular" />
-            )}
-          </button>
+          {/* Mobile */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="text-foreground p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <X size={24} weight="regular" />
+              ) : (
+                <List size={24} weight="regular" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import SplitText from '@/components/SplitText';
-import RotatingText from '@/components/RotatingText';
 import { motion } from 'framer-motion';
+import RotatingText from '@/components/RotatingText';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
 
@@ -13,8 +11,6 @@ interface HeroSectionProps {
   rotatingPrefix?: string;
   ctaText: string;
   ctaHref: string;
-  secondaryCtaText?: string;
-  secondaryCtaHref?: string;
 }
 
 export function HeroSection({
@@ -23,19 +19,22 @@ export function HeroSection({
   rotatingPrefix = 'Building tools for',
   ctaText,
   ctaHref,
-  secondaryCtaText,
-  secondaryCtaHref,
 }: HeroSectionProps) {
-  const [headlineComplete, setHeadlineComplete] = useState(false);
+  const words = headline.split(' ');
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Radial gradient background */}
-      <div className="absolute inset-0 bg-black" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(30,30,30,0.6)_0%,_rgba(0,0,0,1)_70%)]" />
+    <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+      {/* Subtle radial glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.03) 0%, transparent 60%)',
+        }}
+      />
       {/* Subtle grain overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
@@ -43,70 +42,75 @@ export function HeroSection({
         }}
       />
 
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Headline with staggered word reveal */}
-          <SplitText
-            text={headline}
-            tag="h1"
-            splitType="words"
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-white"
-            delay={0.06}
-            duration={0.7}
-            ease={ease}
-            onAnimationComplete={() => setHeadlineComplete(true)}
-          />
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* Wordmark */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease, delay: 0.1 }}
+          className="font-brand text-sm tracking-widest text-muted-foreground mb-8"
+        >
+          MONOPOLE AI
+        </motion.p>
 
-          {/* Rotating subtitle */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={headlineComplete ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, ease }}
-            className="mt-6 sm:mt-8 text-lg sm:text-xl text-muted-foreground flex items-center justify-center gap-2 flex-wrap"
-          >
-            <span>{rotatingPrefix}</span>
-            <RotatingText
-              texts={rotatingTexts}
-              mainClassName="text-white font-medium"
-              staggerFrom="first"
-              staggerDuration={0.02}
-              splitBy="characters"
-              rotationInterval={3000}
+        {/* Headline — manual staggered word reveal */}
+        <div className="flex flex-wrap justify-center gap-x-[0.3em]">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                type: 'spring',
-                damping: 25,
-                stiffness: 300,
+                delay: 0.3 + i * 0.08,
+                duration: 0.5,
+                ease,
               }}
-            />
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={headlineComplete ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease, delay: 0.2 }}
-            className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a
-              href={ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white font-display"
             >
-              {ctaText}
-            </a>
-            {secondaryCtaText && secondaryCtaHref && (
-              <a
-                href={secondaryCtaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {secondaryCtaText}
-              </a>
-            )}
-          </motion.div>
+              {word}
+            </motion.span>
+          ))}
         </div>
+
+        {/* Rotating subtitle */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease, delay: 0.8 }}
+          className="mt-6 sm:mt-8 text-lg sm:text-xl text-muted-foreground flex items-center justify-center gap-2 flex-wrap"
+        >
+          <span>{rotatingPrefix}</span>
+          <RotatingText
+            texts={rotatingTexts}
+            mainClassName="text-white font-medium"
+            staggerFrom="first"
+            staggerDuration={0.02}
+            splitBy="characters"
+            rotationInterval={3000}
+            transition={{
+              type: 'spring',
+              damping: 25,
+              stiffness: 300,
+            }}
+          />
+        </motion.div>
+
+        {/* Single CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease, delay: 1.0 }}
+          className="mt-10 sm:mt-12"
+        >
+          <a
+            href={ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
+            {ctaText}
+          </a>
+        </motion.div>
       </div>
     </section>
   );

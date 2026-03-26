@@ -1,11 +1,29 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { HeroSection } from '@/components/hero-section';
 import { ProductCard } from '@/components/product-card';
 import { FeatureBentoCard } from '@/components/ui/feature-bento-card';
+import { FeatureShowcase } from '@/components/feature-showcase';
 import { SectionWrapper } from '@/components/section-wrapper';
 import BlurText from '@/components/BlurText';
 import { Database, ArrowsClockwise, Buildings } from '@phosphor-icons/react';
+
+const ease = [0.25, 0.46, 0.45, 0.94];
+
+function SectionHeading({ text }: { text: string }) {
+  return (
+    <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+      <BlurText
+        text={text}
+        className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground font-display justify-center"
+        delay={100}
+        animateBy="words"
+        direction="bottom"
+      />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -22,20 +40,11 @@ export default function Home() {
         rotatingPrefix="Building tools for"
         ctaText="Explore Pre-Shift"
         ctaHref="https://pre-shift.io"
-        secondaryCtaText="Learn about Club Cuvée"
-        secondaryCtaHref="/club-cuvee"
       />
 
       {/* Products */}
       <SectionWrapper id="products">
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <BlurText
-            text="What we build"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground justify-center"
-            delay={80}
-            animateBy="words"
-          />
-        </div>
+        <SectionHeading text="What we build" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProductCard
@@ -69,16 +78,15 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
+      {/* Feature Showcase — inline micro-UI demos */}
+      <SectionWrapper>
+        <SectionHeading text="See it in action" />
+        <FeatureShowcase />
+      </SectionWrapper>
+
       {/* Value Proposition */}
-      <SectionWrapper className="bg-black dark:bg-black">
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <BlurText
-            text="Built different"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground justify-center"
-            delay={80}
-            animateBy="words"
-          />
-        </div>
+      <SectionWrapper>
+        <SectionHeading text="Built different" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <FeatureBentoCard
@@ -105,9 +113,15 @@ export default function Home() {
       {/* CTA / Contact */}
       <SectionWrapper>
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+          <motion.h2
+            initial={{ opacity: 0, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground font-display mb-4"
+          >
             Interested in working with us?
-          </h2>
+          </motion.h2>
           <p className="text-muted-foreground text-base sm:text-lg mb-10">
             We work with restaurants and hospitality groups who want better
             tools — not more software.
@@ -115,7 +129,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:josh@monopole-ai.com"
-              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
               Get in touch
             </a>

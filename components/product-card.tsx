@@ -20,14 +20,10 @@ interface ProductCardProps {
 
 const accentStyles = {
   preshift: {
-    glow: 'hover:shadow-[0_0_0_2px_#0057A4,0_0_40px_rgba(0,87,164,0.4)]',
-    text: 'text-preshift',
-    border: 'hover:border-preshift/40',
+    glow: 'hover:shadow-[0_0_0_1px_rgba(0,87,164,0.3),0_0_30px_rgba(0,87,164,0.1)] hover:border-[#0057A4]/30',
   },
   cuvee: {
-    glow: 'hover:shadow-[0_0_0_2px_#7C2D2D,0_0_40px_rgba(124,45,45,0.4)]',
-    text: 'text-cuvee',
-    border: 'hover:border-cuvee/40',
+    glow: 'hover:shadow-[0_0_0_1px_rgba(201,169,110,0.3),0_0_30px_rgba(201,169,110,0.08)] hover:border-[#C9A96E]/20',
   },
 };
 
@@ -52,9 +48,9 @@ export function ProductCard({
       transition={{ duration: 0.6, ease, delay: delay * 0.08 }}
       whileHover={{ scale: 1.03, translateY: -6 }}
       className={cn(
-        'rounded-2xl p-8 sm:p-10',
-        'bg-white/5 border border-white/10',
-        'transition-shadow duration-300',
+        'group rounded-2xl p-8 sm:p-10',
+        'bg-white dark:bg-white/[0.02] border border-zinc-200 dark:border-white/10',
+        'transition-all duration-300',
         styles.glow,
         featured && 'lg:col-span-1'
       )}
@@ -67,7 +63,7 @@ export function ProductCard({
         {points.map((point, i) => (
           <span
             key={i}
-            className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground"
+            className="text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-transparent dark:bg-white/[0.03] text-muted-foreground group-hover:border-zinc-300 dark:group-hover:border-white/20 group-hover:text-foreground/70 transition-colors duration-300"
           >
             {point}
           </span>
@@ -80,10 +76,7 @@ export function ProductCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(
-          'inline-flex items-center gap-1.5 text-sm font-medium transition-colors',
-          'text-muted-foreground hover:text-foreground'
-        )}
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
       >
         {ctaText}
         <ArrowUpRight size={16} weight="regular" />

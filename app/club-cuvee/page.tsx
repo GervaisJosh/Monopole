@@ -14,7 +14,7 @@ export default function ClubCuvee() {
     <>
       {/* Hero */}
       <SectionWrapper className="pt-32 sm:pt-40 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(124,45,45,0.08)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,169,110,0.04)_0%,_transparent_70%)]" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
             Club Cuvée
@@ -52,7 +52,7 @@ export default function ClubCuvee() {
               href="https://www.club-cuvee.com/landing"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
               Visit Club Cuvée
             </a>
@@ -64,7 +64,7 @@ export default function ClubCuvee() {
             rel="noopener noreferrer"
             className="block group"
           >
-            <div className="rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 group-hover:shadow-[0_0_0_2px_#7C2D2D,0_0_40px_rgba(124,45,45,0.3)]">
+            <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10 transition-all duration-300 group-hover:shadow-[0_0_0_1px_rgba(201,169,110,0.3),0_0_30px_rgba(201,169,110,0.08)]">
               <Image
                 src="/images/club-cuvee-preview.png"
                 alt="Club Cuvée platform screenshot"
@@ -142,18 +142,18 @@ export default function ClubCuvee() {
               while building long-term guest loyalty.
             </p>
             <div className="flex flex-wrap gap-3">
-              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+              <span className="text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-transparent dark:bg-white/[0.03] text-muted-foreground">
                 Sell off overstocked inventory
               </span>
-              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+              <span className="text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-transparent dark:bg-white/[0.03] text-muted-foreground">
                 Recurring revenue with zero admin
               </span>
-              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+              <span className="text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-white/10 bg-transparent dark:bg-white/[0.03] text-muted-foreground">
                 Curated shipments from guest data
               </span>
             </div>
           </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10">
             <Image
               src="/images/wine-cellar.jpg"
               alt="Curated wine inventory"
@@ -178,7 +178,7 @@ export default function ClubCuvee() {
             href="https://www.club-cuvee.com/landing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
           >
             Visit Club Cuvée
           </a>
