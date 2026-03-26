@@ -43,10 +43,10 @@ export function Footer() {
               Contact
             </h4>
             <a
-              href="mailto:josh@monopole-ai.com"
+              href="/#contact"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              josh@monopole-ai.com
+              Get in touch
             </a>
           </div>
         </div>

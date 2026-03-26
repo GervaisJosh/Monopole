@@ -35,7 +35,7 @@ export function HeroSection({
           className="object-cover object-center"
         />
         {/* Dark/light overlay */}
-        <div className="absolute inset-0 bg-white/70 dark:bg-black/80" />
+        <div className="absolute inset-0 bg-white/75 dark:bg-black/80 transition-colors duration-300" />
         {/* Bottom gradient for smooth section transition */}
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>

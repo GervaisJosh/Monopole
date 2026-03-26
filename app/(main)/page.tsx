@@ -59,39 +59,38 @@ export default function Home() {
       <SectionWrapper>
         <SectionHeading text="Our philosophy" />
 
-        <div className="max-w-3xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, ease }}
-            className="text-muted-foreground text-base sm:text-lg leading-relaxed text-center mb-16 sm:mb-20"
-          >
-            Restaurants already have everything they need — menus, wine lists,
-            service standards, years of accumulated knowledge. The problem was
-            never a lack of information. It was that no one built the right tools
-            to make that information work. Monopole exists to change that.
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, ease }}
+          className="text-muted-foreground text-base sm:text-lg leading-relaxed text-center max-w-3xl mx-auto mb-16 sm:mb-20"
+        >
+          Restaurants already have everything they need — menus, wine lists,
+          service standards, years of accumulated knowledge. The problem was
+          never a lack of information. It was that no one built the right tools
+          to make that information work. Monopole exists to change that.
+        </motion.p>
 
-          <div className="space-y-0">
-            {philosophyStatements.map((statement, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-                className="py-10 sm:py-14 border-t border-zinc-100 dark:border-white/5 first:border-t-0"
-              >
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
-                  {statement.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {statement.body}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {philosophyStatements.map((statement, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ delay: i * 0.1, duration: 0.6, ease }}
+              className="rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.02] p-8 shadow-sm dark:shadow-none hover:border-zinc-300 dark:hover:border-white/20 transition-all duration-300"
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 font-display">
+                {statement.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-zinc-600 dark:text-white/50">
+                {statement.body}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </SectionWrapper>
 
@@ -164,8 +163,8 @@ export default function Home() {
         <EcosystemFlywheel />
       </SectionWrapper>
 
-      {/* CTA / Contact */}
-      <SectionWrapper>
+      {/* Contact Form */}
+      <SectionWrapper id="contact">
         <div className="max-w-2xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, filter: 'blur(10px)' }}
@@ -174,30 +173,54 @@ export default function Home() {
             transition={{ duration: 0.8, ease }}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground font-display mb-4"
           >
-            Interested in working with us?
+            Get in touch
           </motion.h2>
           <p className="text-muted-foreground text-base sm:text-lg mb-10 leading-relaxed">
             We work with restaurants and hospitality groups who want better tools
-            — not more software. Whether you're a single restaurant looking to
+            — not more software. Whether you&apos;re a single restaurant looking to
             sharpen your training or a multi-concept group ready to standardize
-            education across properties, we'd love to talk.
+            education across properties, we&apos;d love to talk.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:josh@monopole-ai.com"
-              className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-medium border border-zinc-300 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+          {/* TODO: Replace YOUR_FORM_ID with your Formspree form ID (https://formspree.io) */}
+          <form
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            className="space-y-4 max-w-lg mx-auto text-left"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              className="w-full rounded-lg border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/30 focus:outline-none focus:border-zinc-400 dark:focus:border-white/20 transition-colors"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              className="w-full rounded-lg border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/30 focus:outline-none focus:border-zinc-400 dark:focus:border-white/20 transition-colors"
+            />
+            <input
+              type="text"
+              name="company"
+              placeholder="Company (optional)"
+              className="w-full rounded-lg border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/30 focus:outline-none focus:border-zinc-400 dark:focus:border-white/20 transition-colors"
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              rows={4}
+              required
+              className="w-full rounded-lg border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/30 focus:outline-none focus:border-zinc-400 dark:focus:border-white/20 transition-colors resize-none"
+            />
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black py-3 text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              Get in touch
-            </a>
-            <a
-              href="https://pre-shift.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              See Pre-Shift in action
-            </a>
-          </div>
+              Send Message
+            </button>
+          </form>
         </div>
       </SectionWrapper>
     </div>

@@ -9,7 +9,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 const routes = [
   { href: '/pre-shift', label: 'Pre-Shift' },
   { href: '/club-cuvee', label: 'Club Cuvée' },
-  { href: 'mailto:josh@monopole-ai.com', label: 'Contact', external: true },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export function Header() {
@@ -53,25 +53,15 @@ export function Header() {
 
           {/* Desktop */}
           <nav className="hidden md:flex items-center gap-8">
-            {routes.map((route) =>
-              route.external ? (
-                <a
-                  key={route.href}
-                  href={route.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {route.label}
-                </a>
-              ) : (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {route.label}
-                </Link>
-              )
-            )}
+            {routes.map((route) => (
+              <Link
+                key={route.href}
+                href={route.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {route.label}
+              </Link>
+            ))}
             <ThemeToggle />
           </nav>
 
@@ -97,27 +87,16 @@ export function Header() {
       {mobileOpen && (
         <div className="md:hidden fixed inset-0 top-20 bg-background/95 backdrop-blur-md z-40">
           <nav className="flex flex-col items-center gap-8 pt-16">
-            {routes.map((route) =>
-              route.external ? (
-                <a
-                  key={route.href}
-                  href={route.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-medium text-foreground"
-                >
-                  {route.label}
-                </a>
-              ) : (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-medium text-foreground"
-                >
-                  {route.label}
-                </Link>
-              )
-            )}
+            {routes.map((route) => (
+              <Link
+                key={route.href}
+                href={route.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-lg font-medium text-foreground"
+              >
+                {route.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}

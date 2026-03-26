@@ -28,13 +28,13 @@ export default function ClubCuvee() {
     <>
       {/* Hero */}
       <SectionWrapper className="pt-32 sm:pt-40 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,169,110,0.04)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.02)_0%,_transparent_70%)]" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease }}
-            className="font-brand text-sm tracking-[0.3em] uppercase text-[#C9A96E] mb-6"
+            className="font-brand text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6"
           >
             CLUB CUVÉE
           </motion.p>
@@ -87,7 +87,7 @@ export default function ClubCuvee() {
             rel="noopener noreferrer"
             className="block group"
           >
-            <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10 transition-all duration-300 group-hover:shadow-[0_0_0_1px_rgba(201,169,110,0.3),0_0_30px_rgba(201,169,110,0.08)]">
+            <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10 transition-all duration-300 group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.04)]">
               <Image
                 src="/images/club-cuvee-preview.png"
                 alt="Club Cuvée platform screenshot"
@@ -111,50 +111,30 @@ export default function ClubCuvee() {
             description="Selections come from what you actually have. The system factors in stock levels, margin targets, and seasonal priorities alongside guest preferences. Move slow-moving bottles by pairing them with crowd favorites. Feature new arrivals to the members most likely to love them."
             icon={<Warehouse size={32} weight="light" />}
             delay={0}
-            accentColor="cuvee"
+            accentColor="neutral"
           />
           <FeatureBentoCard
             title="Guest preference engine"
             description="Members rate wines through a simple, beautiful interface. Over time, the system builds a taste profile — varietal preferences, regional affinities, price comfort, adventurousness — and uses it to curate increasingly personalized selections."
             icon={<Heart size={32} weight="light" />}
             delay={1}
-            accentColor="cuvee"
+            accentColor="neutral"
           />
           <FeatureBentoCard
             title="Zero-labor fulfillment logic"
             description="The platform handles the membership mechanics: billing cadence, selection generation, member communication, and shipment coordination. Your team focuses on hospitality, not logistics."
             icon={<HandHeart size={32} weight="light" />}
             delay={2}
-            accentColor="cuvee"
+            accentColor="neutral"
           />
           <FeatureBentoCard
             title="Works with your identity"
             description="Club Cuvée doesn't impose a house style. If you're a natural wine bar, the selections reflect that. If you're a classic French restaurant with deep Burgundy holdings, the algorithm learns that context. Your wine program, amplified."
             icon={<Wine size={32} weight="light" />}
             delay={3}
-            accentColor="cuvee"
+            accentColor="neutral"
           />
         </div>
-      </SectionWrapper>
-
-      {/* Wine imagery */}
-      <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease }}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10">
-            <Image
-              src="/images/wine-cellar.jpg"
-              alt="Curated wine inventory"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </motion.div>
       </SectionWrapper>
 
       {/* CTA */}
@@ -183,7 +163,7 @@ export default function ClubCuvee() {
               Visit club-cuvee.com
             </a>
             <a
-              href="mailto:josh@monopole-ai.com"
+              href="/#contact"
               className="inline-flex items-center justify-center rounded-lg px-8 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Get in touch
