@@ -3,73 +3,74 @@
 import Image from 'next/image';
 import { SectionWrapper } from '@/components/section-wrapper';
 import { FeatureBentoCard } from '@/components/ui/feature-bento-card';
-import { Wine, Database, Sparkles, Users, BarChart2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Wine, ChartBar, Sparkle, Users } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import BlurText from '@/components/BlurText';
+
+const ease = [0.25, 0.46, 0.45, 0.94];
 
 export default function ClubCuvee() {
   return (
     <>
-      {/* HERO */}
-      <SectionWrapper className="pt-32 md:pt-40 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/restaurant-interior.jpg')] bg-cover bg-center opacity-10 z-0" />
+      {/* Hero */}
+      <SectionWrapper className="pt-32 sm:pt-40 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(124,45,45,0.08)_0%,_transparent_70%)]" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 text-white">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
             Club Cuvée
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 leading-relaxed">
-            A wine membership platform that connects restaurants' wine inventory, guest data, and a custom recommendation algorithm.
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            A wine membership platform that connects restaurant inventory,
+            guest preferences, and curated selections — without adding
+            complexity to your operations.
           </p>
         </div>
       </SectionWrapper>
 
-      {/* COMBINED LIVE PREVIEW + CTA */}
-      <SectionWrapper className="bg-black py-24">
+      {/* Live Preview + CTA */}
+      <SectionWrapper>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease }}
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center"
         >
-          {/* LEFT: Text & CTA */}
           <div className="text-left">
-            <h2 className="font-serif text-3xl md:text-4xl mb-6 text-white">
-              Explore the Live Platform
-            </h2>
-            <p className="text-muted-foreground text-base md:text-lg mb-8">
-              Club Cuvée is more than a concept—our platform is live and in use. See how restaurants are using Club Cuvée to connect their wine inventory, guest data, and personalized memberships.
+            <BlurText
+              text="See the live platform"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-6"
+              delay={80}
+              animateBy="words"
+            />
+            <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
+              Club Cuvée is live and in use. See how restaurants connect their
+              wine inventory, guest data, and personalized memberships — all
+              from a single platform.
             </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="font-display glow-hover"
-              asChild
+            <a
+              href="https://www.club-cuvee.com/landing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
-              <a
-                href="https://www.club-cuvee.com/landing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Club Cuvée →
-              </a>
-            </Button>
+              Visit Club Cuvée
+            </a>
           </div>
 
-          {/* RIGHT: Image Preview Link */}
           <a
             href="https://www.club-cuvee.com/landing"
             target="_blank"
             rel="noopener noreferrer"
             className="block group"
           >
-            <div className="rounded-xl overflow-hidden shadow-xl border border-border/50 transition-transform duration-300 group-hover:scale-[1.01] glow-hover">
+            <div className="rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 group-hover:shadow-[0_0_0_2px_#7C2D2D,0_0_40px_rgba(124,45,45,0.3)]">
               <Image
                 src="/images/club-cuvee-preview.png"
-                alt="Club Cuvée website screenshot"
+                alt="Club Cuvée platform screenshot"
                 width={1200}
                 height={700}
-                className="w-full object-cover rounded-xl"
+                className="w-full object-cover"
                 priority
               />
             </div>
@@ -77,77 +78,85 @@ export default function ClubCuvee() {
         </motion.div>
       </SectionWrapper>
 
-      {/* KEY FEATURES */}
-      <SectionWrapper className="bg-black pt-24 pb-32">
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl mb-4 text-white">
-            Key Features
-          </h2>
-          <p className="text-muted-foreground md:text-lg">
-            Core tools that power your AI-driven wine club.
+      {/* Key Features */}
+      <SectionWrapper>
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <BlurText
+            text="Key Features"
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground justify-center"
+            delay={80}
+            animateBy="words"
+          />
+          <p className="text-muted-foreground sm:text-lg mt-4">
+            Core tools that power your wine membership program.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <FeatureBentoCard
-            title="AI Wine Analysis"
-            description="Analyze your inventory and guest trends to optimize decisions."
-            icon={<BarChart2 className="h-10 w-10" />}
+            title="Wine analysis and insights"
+            description="Understand your inventory patterns and guest trends to make better purchasing and pricing decisions."
+            icon={<ChartBar size={32} weight="light" />}
             delay={0}
+            accentColor="cuvee"
           />
           <FeatureBentoCard
-            title="Revenue Tools"
-            description="Maximize sales with AI-driven promotions and recommendations."
-            icon={<Sparkles className="h-10 w-10" />}
+            title="Revenue tools"
+            description="Move overstocked inventory, surface high-margin bottles, and grow recurring membership revenue."
+            icon={<Sparkle size={32} weight="light" />}
             delay={1}
+            accentColor="cuvee"
           />
           <FeatureBentoCard
-            title="Customer Engagement"
-            description="Deliver tailored wine journeys to every guest."
-            icon={<Users className="h-10 w-10" />}
+            title="Guest engagement"
+            description="Deliver curated wine selections based on individual preferences, purchase history, and tasting feedback."
+            icon={<Users size={32} weight="light" />}
             delay={2}
+            accentColor="cuvee"
           />
           <FeatureBentoCard
-            title="Ratings & Insights"
-            description="Capture preferences through a modern wine rating system."
-            icon={<Wine className="h-10 w-10" />}
+            title="Ratings and preferences"
+            description="Capture tasting notes and preferences through a modern rating system that feeds back into recommendations."
+            icon={<Wine size={32} weight="light" />}
             delay={3}
+            accentColor="cuvee"
           />
         </div>
       </SectionWrapper>
 
-      {/* SALES COPY BLOCK */}
-      <SectionWrapper className="py-24">
+      {/* Sales Copy */}
+      <SectionWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl mb-6 text-white">
-              Launch a Wine Club From Your Inventory
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+              Launch a wine club from your existing inventory
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Club Cuvée helps restaurants turn existing wine inventory into personalized membership programs—with no technical setup or added labor.
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Club Cuvée helps restaurants turn existing wine inventory into
+              personalized membership programs — with no technical setup or
+              added labor.
             </p>
-            <p className="text-muted-foreground mb-6">
-              Our platform automates everything from wine recommendations to fulfillment logic, freeing your team to focus on hospitality while building long-term guest loyalty.
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              The platform handles everything from recommendations to
+              fulfillment logic, freeing your team to focus on hospitality
+              while building long-term guest loyalty.
             </p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span>Sell off overstocked or under-performing inventory</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span>Launch a recurring wine club with zero admin overhead</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-white mt-1">✓</span>
-                <span>Deliver curated shipments powered by guest data</span>
-              </li>
-            </ul>
+            <div className="flex flex-wrap gap-3">
+              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+                Sell off overstocked inventory
+              </span>
+              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+                Recurring revenue with zero admin
+              </span>
+              <span className="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground">
+                Curated shipments from guest data
+              </span>
+            </div>
           </div>
-          <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
             <Image
               src="/images/wine-cellar.jpg"
-              alt="Curated wine inventory crate"
+              alt="Curated wine inventory"
               fill
               className="object-cover"
             />
@@ -156,28 +165,23 @@ export default function ClubCuvee() {
       </SectionWrapper>
 
       {/* CTA */}
-      <SectionWrapper className="bg-black py-20">
+      <SectionWrapper>
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4 text-white">
-            Ready to revolutionize your wine program?
-          </h3>
-          <p className="text-muted-foreground text-base md:text-lg mb-8">
-            Join leading restaurants already using Club Cuvée to create exceptional wine experiences.
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+            Ready to build your wine program?
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg mb-10">
+            See how restaurants are using Club Cuvée to create exceptional
+            wine experiences.
           </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="font-display glow-hover"
-            asChild
+          <a
+            href="https://www.club-cuvee.com/landing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
           >
-            <a
-              href="https://www.club-cuvee.com/landing"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Club Cuvée →
-            </a>
-          </Button>
+            Visit Club Cuvée
+          </a>
         </div>
       </SectionWrapper>
     </>

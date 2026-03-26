@@ -17,9 +17,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        serif: ['var(--font-playfair)', 'serif'],
-        sans: ['var(--font-hv-florentino)', 'var(--font-inter)', 'sans-serif'],
-        display: ['var(--font-tay-basal)', 'serif'],
+        display: ['var(--font-satoshi)', 'sans-serif'],
+        body: ['var(--font-satoshi)', 'sans-serif'],
+        brand: ['var(--font-tay-basal)', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -56,13 +56,12 @@ const config: Config = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
 
-        // ⚡ Only use manually — not applied globally anymore
-        brand: {
-          DEFAULT: '#1471ff',
-          soft: '#1992ff',
-        },
+        // Product accent colors — used ONLY within product cards/sections
         preshift: {
           DEFAULT: '#0057A4',
+        },
+        cuvee: {
+          DEFAULT: '#7C2D2D',
         },
       },
       borderRadius: {
@@ -72,14 +71,8 @@ const config: Config = {
       },
       keyframes: {
         'fade-up': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(20px)',
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)',
-          },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {

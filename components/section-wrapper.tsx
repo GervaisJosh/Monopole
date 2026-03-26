@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
@@ -12,15 +12,15 @@ interface SectionWrapperProps {
   delay?: number;
 }
 
-export function SectionWrapper({ 
-  children, 
+export function SectionWrapper({
+  children,
   className,
   id,
   fullWidth = false,
-  delay = 0
+  delay = 0,
 }: SectionWrapperProps) {
   return (
-    <section id={id} className={cn("py-16 md:py-24 bg-black", className)}>
+    <section id={id} className={cn('py-24 sm:py-32', className)}>
       <MotionSection delay={delay}>
         {fullWidth ? (
           children

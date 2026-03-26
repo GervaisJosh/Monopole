@@ -1,117 +1,132 @@
-import Link from 'next/link';
+'use client';
+
 import { HeroSection } from '@/components/hero-section';
 import { ProductCard } from '@/components/product-card';
 import { FeatureBentoCard } from '@/components/ui/feature-bento-card';
 import { SectionWrapper } from '@/components/section-wrapper';
-import { Button } from '@/components/ui/button';
-import { Wine, Server, Brain, Users, Clock, BarChart3 } from 'lucide-react';
+import BlurText from '@/components/BlurText';
+import { Database, ArrowsClockwise, Buildings } from '@phosphor-icons/react';
 
 export default function Home() {
   return (
     <div>
+      {/* Hero */}
       <HeroSection
-        title="Crafting intelligent tools for modern hospitality."
-        subtitle="Monopole AI"
-        description="We build deeply integrated AI systems that elevate hospitality—from personalized wine clubs to adaptive staff education"
-        ctaText="Visit Club Cuvée"
-        ctaHref="https://www.club-cuvee.com/landing"
-        secondaryCtaText="Visit Pre-Shift"
-        secondaryCtaHref="https://www.pre-shift.io"
+        headline="Technology built for hospitality."
+        rotatingTexts={[
+          'sharper service',
+          'faster onboarding',
+          'deeper menu knowledge',
+          'measurable growth',
+        ]}
+        rotatingPrefix="Building tools for"
+        ctaText="Explore Pre-Shift"
+        ctaHref="https://pre-shift.io"
+        secondaryCtaText="Learn about Club Cuvée"
+        secondaryCtaHref="/club-cuvee"
       />
-      
-      <SectionWrapper>
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl mb-4">Our Platform</h2>
-          <p className="text-muted-foreground md:text-lg">
-            Monopole AI owns and maintains the core data infrastructure, algorithms, and technology that powers our suite of vertical SaaS products for the hospitality industry.
-          </p>
+
+      {/* Products */}
+      <SectionWrapper id="products">
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <BlurText
+            text="What we build"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground justify-center"
+            delay={80}
+            animateBy="words"
+          />
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <ProductCard
-            title="Club Cuvée"
-            description="An intelligent wine membership platform that connects restaurant inventory, guest data, and AI recommendations."
-            href="/club-cuvee"
-            imageSrc="/images/club-cuvee-preview.png"
-            className="glow-hover hover:scale-105 transition-all duration-300"
+            name="PRE-SHIFT"
+            tagline="A training compiler for restaurants. Upload your menus — get adaptive, grounded training that improves with every staff interaction."
+            points={[
+              '6 training modalities',
+              '100% question grounding',
+              'Closed-loop improvement',
+              'App Store live',
+            ]}
+            href="https://pre-shift.io"
+            ctaText="Visit Pre-Shift"
+            accent="preshift"
+            featured
+            delay={0}
           />
           <ProductCard
-            title="Pre-shift"
-            description="AI-driven training and onboarding for restaurant staff using real-time menu data and contextual education."
-            href="/pre-shift"
-            imageSrc="/images/PS-landing-improved.png"
-            className="glow-hover hover:scale-105 transition-all duration-300"
+            name="CLUB CUVÉE"
+            tagline="A wine membership platform connecting restaurant inventory, guest preferences, and curated selections."
+            points={[
+              'Personalized recommendations',
+              'Inventory-driven curation',
+              'Zero admin overhead',
+            ]}
+            href="https://www.club-cuvee.com/landing"
+            ctaText="Visit Club Cuvée"
+            accent="cuvee"
+            delay={1}
           />
         </div>
       </SectionWrapper>
-      
-      <SectionWrapper className="bg-black">
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl mb-4">Why AI + Hospitality?</h2>
-          <p className="text-muted-foreground md:text-lg">
-            The hospitality industry is rich with data but has historically lacked the tools to unlock its value. Our AI-powered solutions bridge this gap.
-          </p>
+
+      {/* Value Proposition */}
+      <SectionWrapper className="bg-black dark:bg-black">
+        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+          <BlurText
+            text="Built different"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground justify-center"
+            delay={80}
+            animateBy="words"
+          />
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <FeatureBentoCard
-            title="Data-Driven Insights"
-            description="Transform scattered hospitality data into actionable insights that improve guest experiences and operational efficiency."
-            icon={<BarChart3 className="h-10 w-10" />}
+            title="Grounded in your data"
+            description="Every tool we build starts with what's real — your menus, your documents, your operations. Nothing generic. Nothing hallucinated."
+            icon={<Database size={32} weight="light" />}
             delay={0}
           />
           <FeatureBentoCard
-            title="Personalized Experiences"
-            description="Create memorable moments for guests with AI-powered recommendations and personalized service opportunities."
-            icon={<Users className="h-10 w-10" />}
+            title="Learns from usage"
+            description="Staff answers, guest preferences, and operational patterns feed back into the system. Quality improves automatically, not manually."
+            icon={<ArrowsClockwise size={32} weight="light" />}
             delay={1}
           />
           <FeatureBentoCard
-            title="Operational Excellence"
-            description="Streamline training, inventory management, and decision-making with intelligent tools built specifically for hospitality."
-            icon={<Clock className="h-10 w-10" />}
+            title="Built for hospitality"
+            description="We don't adapt enterprise software for restaurants. We build for hospitality from the ground up — the workflows, the pace, the people."
+            icon={<Buildings size={32} weight="light" />}
             delay={2}
           />
         </div>
       </SectionWrapper>
-      
-      <SectionWrapper className="bg-black py-20">
+
+      {/* CTA / Contact */}
+      <SectionWrapper>
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4 text-white">
-            Ready to transform your hospitality business?
-          </h3>
-          <p className="text-muted-foreground text-base md:text-lg mb-8">
-            See how Monopole AI's products can enhance your restaurant operations and guest experiences.
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+            Interested in working with us?
+          </h2>
+          <p className="text-muted-foreground text-base sm:text-lg mb-10">
+            We work with restaurants and hospitality groups who want better
+            tools — not more software.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              variant="outline"
-              size="lg"
-              className="font-display glow-hover"
-              asChild
+            <a
+              href="mailto:josh@monopole-ai.com"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium border border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
-              <a
-                href="https://www.club-cuvee.com/landing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Club Cuvée →
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="font-display glow-hover"
-              asChild
+              Get in touch
+            </a>
+            <a
+              href="https://pre-shift.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              <a
-                href="https://www.pre-shift.io"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Pre-Shift →
-              </a>
-            </Button>
+              See Pre-Shift in action
+            </a>
           </div>
         </div>
       </SectionWrapper>

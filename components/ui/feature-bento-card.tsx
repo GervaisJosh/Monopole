@@ -12,12 +12,18 @@ interface FeatureBentoCardProps {
   className?: string;
   titleClassName?: string;
   descriptionClassName?: string;
+  accentColor?: 'preshift' | 'cuvee' | 'neutral';
 }
 
-/**
- * Unified bento-style feature card with 3D hover effect and blue glow
- * Used across Club Cuvée, Pre-Shift, and home page for visual consistency
- */
+const accentGlows = {
+  neutral:
+    'hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_0_30px_rgba(255,255,255,0.05)]',
+  preshift:
+    'hover:shadow-[0_0_0_2px_#0057A4,0_0_40px_rgba(0,87,164,0.4)]',
+  cuvee:
+    'hover:shadow-[0_0_0_2px_#7C2D2D,0_0_40px_rgba(124,45,45,0.4)]',
+};
+
 export function FeatureBentoCard({
   title,
   description,
@@ -26,34 +32,45 @@ export function FeatureBentoCard({
   className = '',
   titleClassName = '',
   descriptionClassName = '',
+  accentColor = 'neutral',
 }: FeatureBentoCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: delay * 0.15 }}
+      transition={{
+        duration: 0.6,
+        delay: delay * 0.08,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
       viewport={{ once: true }}
+      whileHover={{ scale: 1.03, translateY: -6 }}
       className={cn(
-        // Base styles
-        'bg-card rounded-xl border border-border p-6 shadow-lg',
-        // 3D hover effect - lift up and slight scale
-        'transition-all duration-300 ease-out',
-        'hover:-translate-y-1 hover:scale-[1.02]',
-        // Blue glow on hover
-        'hover:shadow-[0_0_30px_rgba(20,113,255,0.4)]',
-        'hover:border-border/80',
-        // Group for child hover effects
+        'rounded-2xl p-6 shadow-lg',
+        'bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/10',
+        'transition-shadow duration-300 ease-out',
+        accentGlows[accentColor],
         'group cursor-default',
         className
       )}
     >
-      <div className="mb-4 text-white transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(20,113,255,0.6)]">
+      <div className="mb-4 text-foreground/80 transition-all duration-300 group-hover:text-foreground">
         {icon}
       </div>
-      <h3 className={cn('text-lg font-bold text-white mb-2', titleClassName)}>
+      <h3
+        className={cn(
+          'text-lg font-bold text-foreground mb-2',
+          titleClassName
+        )}
+      >
         {title}
       </h3>
-      <p className={cn('text-sm text-muted-foreground leading-relaxed', descriptionClassName)}>
+      <p
+        className={cn(
+          'text-sm text-muted-foreground leading-relaxed',
+          descriptionClassName
+        )}
+      >
         {description}
       </p>
     </motion.div>

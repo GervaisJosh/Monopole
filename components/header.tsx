@@ -3,134 +3,118 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { List, X } from '@phosphor-icons/react';
 
 const routes = [
-  { href: '/club-cuvee', label: 'Club Cuvée' },
-  { href: '/pre-shift', label: 'Pre-shift' },
+  { href: '/#products', label: 'Products' },
+  { href: 'mailto:josh@monopole-ai.com', label: 'Contact', external: true },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   return (
-    <header className={cn(
-      'fixed top-0 w-full z-50 transition-all duration-300',
-      isScrolled ? 'bg-background/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    )}>
+    <header
+      className={cn(
+        'fixed top-0 w-full z-50 transition-all duration-300',
+        isScrolled
+          ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm'
+          : 'bg-transparent backdrop-blur-sm'
+      )}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
           <Link
             href="/"
-            className="font-display text-xl font-bold text-white hover:text-white/80 transition"
+            className="font-brand text-xl text-foreground hover:text-foreground/80 transition"
           >
             MONOPOLE AI
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-4">
-            {routes.map(route => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className="font-display text-sm text-white transition-all px-4 py-2 rounded-full border border-transparent hover:border-white glow-hover"
-              >
-                {route.label}
-              </Link>
-            ))}
-            <Button
-              variant="outline"
-              className="font-display text-sm glow-hover border border-white/30 hover:border-white"
-              asChild
-            >
-              <a
-                href="https://www.club-cuvee.com/landing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Club Cuvée
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              className="font-display text-sm glow-hover border border-white/30 hover:border-white"
-              asChild
-            >
-              <a
-                href="https://www.pre-shift.io"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit Pre-Shift
-              </a>
-            </Button>
+          {/* Desktop */}
+          <nav className="hidden md:flex items-center gap-8">
+            {routes.map((route) =>
+              route.external ? (
+                <a
+                  key={route.href}
+                  href={route.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {route.label}
+                </a>
+              ) : (
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {route.label}
+                </Link>
+              )
+            )}
           </nav>
 
-          {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6 text-white" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col gap-6 mt-10">
-                {routes.map(route => (
-                  <Link
-                    key={route.href}
-                    href={route.href}
-                    className="font-display text-lg text-white transition-all px-4 py-3 rounded-full border border-transparent hover:border-white glow-hover"
-                  >
-                    {route.label}
-                  </Link>
-                ))}
-                <Button
-                  variant="outline"
-                  className="w-full font-display glow-hover border border-white/30 hover:border-white"
-                  asChild
-                >
-                  <a
-                    href="https://www.club-cuvee.com/landing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit Club Cuvée
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full font-display glow-hover border border-white/30 hover:border-white"
-                  asChild
-                >
-                  <a
-                    href="https://www.pre-shift.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit Pre-Shift
-                  </a>
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden text-foreground p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? (
+              <X size={24} weight="regular" />
+            ) : (
+              <List size={24} weight="regular" />
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden fixed inset-0 top-20 bg-background/95 backdrop-blur-md z-40">
+          <nav className="flex flex-col items-center gap-8 pt-16">
+            {routes.map((route) =>
+              route.external ? (
+                <a
+                  key={route.href}
+                  href={route.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-medium text-foreground"
+                >
+                  {route.label}
+                </a>
+              ) : (
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-medium text-foreground"
+                >
+                  {route.label}
+                </Link>
+              )
+            )}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

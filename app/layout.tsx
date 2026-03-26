@@ -1,14 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { inter, playfair, hvFlorentino, tayBasal } from '@/lib/fonts';
+import { satoshi, tayBasal } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'Monopole AI | Intelligent Tools for Modern Hospitality',
-  description: 'Monopole AI crafts intelligent SaaS tools for the modern hospitality industry, including Club Cuvée wine membership platform and Pre-shift staff training system.',
+  title: 'Monopole AI | Technology Built for Hospitality',
+  description: 'Monopole builds technology for the modern hospitality industry, including Pre-Shift staff training and Club Cuvée wine membership platforms.',
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
@@ -24,16 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        'min-h-screen bg-background font-sans antialiased',
-        inter.variable,
-        playfair.variable,
-        hvFlorentino.variable,
+        'min-h-screen bg-background font-display antialiased',
+        satoshi.variable,
         tayBasal.variable
       )}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
+          storageKey="monopole-theme"
         >
           <div className="relative flex min-h-screen flex-col">
             <Header />
