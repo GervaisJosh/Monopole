@@ -5,6 +5,7 @@ import { HeroSection } from '@/components/hero-section';
 import { ProductCard } from '@/components/product-card';
 import { EcosystemFlywheel } from '@/components/ecosystem-flywheel';
 import { SectionWrapper } from '@/components/section-wrapper';
+import { TiltCard } from '@/components/tilt-card';
 import BlurText from '@/components/BlurText';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
@@ -80,15 +81,17 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ delay: i * 0.1, duration: 0.6, ease }}
-              className="rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.02] p-8 shadow-sm dark:shadow-none hover:border-zinc-300 dark:hover:border-white/20 transition-all duration-300"
-              whileHover={{ y: -4 }}
             >
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 font-display">
-                {statement.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-white/50">
-                {statement.body}
-              </p>
+              <TiltCard
+                className="rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.02] p-8 h-full shadow-sm dark:shadow-none hover:shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_8px_30px_rgba(255,255,255,0.03)] hover:border-zinc-300 dark:hover:border-white/20 cursor-default"
+              >
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4 font-display">
+                  {statement.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-zinc-600 dark:text-white/50">
+                  {statement.body}
+                </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

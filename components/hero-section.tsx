@@ -1,6 +1,7 @@
 'use client';
 
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import RotatingText from '@/components/RotatingText';
 
@@ -22,22 +23,31 @@ export function HeroSection({
   ctaHref,
 }: HeroSectionProps) {
   const words = headline.split(' ');
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isDark = !mounted || resolvedTheme === 'dark';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background image — inverted in light mode */}
       <div className="absolute inset-0">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/Wine-bottle-neck.png"
           alt=""
-          fill
-          priority
-          className="object-cover object-center"
+          className="w-full h-full object-cover object-center"
+          style={{
+            filter: isDark ? 'none' : 'invert(1)',
+            opacity: isDark ? 1 : 0.5,
+            transition: 'filter 0.3s, opacity 0.3s',
+          }}
         />
-        {/* Dark/light overlay */}
-        <div className="absolute inset-0 bg-white/75 dark:bg-black/80 transition-colors duration-300" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/30 dark:bg-black/80 transition-colors duration-300" />
         {/* Bottom gradient for smooth section transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white dark:from-black to-transparent transition-colors duration-300" />
       </div>
 
       {/* Content */}
