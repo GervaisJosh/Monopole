@@ -14,15 +14,15 @@ const ease = [0.25, 0.46, 0.45, 0.94];
 function downloadVCard() {
   const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:Josh Gervais
+FN:Joshua Gervais
+N:Gervais;Joshua;;;
 ORG:Monopole AI
 TITLE:Founder
-TEL;TYPE=CELL:+15125550000
+TEL;TYPE=CELL:+17374029290
 EMAIL:josh@monopole-ai.com
 URL:https://monopole-ai.com
 URL:https://pre-shift.io
 END:VCARD`;
-  // TODO: Replace +15125550000 with Josh's actual phone number
 
   const blob = new Blob([vcard], { type: 'text/vcard' });
   const url = URL.createObjectURL(blob);
@@ -36,8 +36,8 @@ END:VCARD`;
 const contactRows = [
   {
     icon: <Phone size={20} weight="light" />,
-    label: '(512) 555-0000', // TODO: Replace with Josh's actual phone number
-    href: 'tel:+15125550000', // TODO: Replace with Josh's actual phone number
+    label: '(737) 402-9290',
+    href: 'tel:+17374029290',
   },
   {
     icon: <EnvelopeSimple size={20} weight="light" />,
@@ -57,11 +57,7 @@ const linkRows = [
   },
   {
     label: 'App Store',
-    href: 'https://apps.apple.com/app/pre-shift-restaurant-training/id6504956209',
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/josh-gervais/',
+    href: 'https://apps.apple.com/us/app/pre-shift/id6760989576',
   },
 ];
 
